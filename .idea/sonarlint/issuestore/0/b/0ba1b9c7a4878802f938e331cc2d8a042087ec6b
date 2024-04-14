@@ -1,2 +1,6 @@
 
-r	java:S106"+Replace this use of System.out by a logger.(İ‰øÜşÿÿÿÿ8Ãö€‡ê1J$637a8c53-1b56-4166-9ff7-aa3c8b7f78ee
+m	java:S106
+"+Replace this use of System.out by a logger.(ïÖßÄ8çíı¦ê1J$a04a0c36-fa73-462f-92af-f04b5f92f527
+m	java:S106"+Replace this use of System.out by a logger.(ìÁâŒ8èíı¦ê1J$6201d971-ac85-48cd-a4e2-d2c7640176d5
+t
+java:S1128",Remove this unused import 'java.io.Console'.(æÅªıÿÿÿÿ8éíı¦ê1J$12061bca-cf8a-4bd2-8e93-2ab0d1b9c379

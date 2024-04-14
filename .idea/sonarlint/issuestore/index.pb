@@ -30,3 +30,5 @@ Q.idea/sonarlint/securityhotspotstore/a/5/a5cc2925ca8258af241be7e5b0381edf302663
 Q.idea/sonarlint/securityhotspotstore/a/b/abe25e851ee828e40a94fcb1c1be6f78ff7a04cf,1\c\1cba3ad75947c1f71a8c3d84410fbd88ca84eee7
 Å
 Q.idea/sonarlint/securityhotspotstore/2/c/2cabb939da04d3de3a200bf2b575690e1a16316d,f\6\f6d8310b47b1802ff534ff6900f24d2d3b76c4f1
+\
+,src/main/java/org/example/CalculatorBin.java,1\9\19cdd8297a102379eb16b0dad76b9bbc89c907ef

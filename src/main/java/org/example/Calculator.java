@@ -1,21 +1,16 @@
 package org.example;
-
 import java.text.DecimalFormat;
 
-public class Calculator {
-    private double a;
-    private double b;
-    private String operation;
+public class Calculator{
+    protected double a;
+    protected double b;
+    protected String operation;
+
+    protected double solution;
 
     public Calculator(){
-        a = 0;
-        b = 0;
-        operation = "+";
-    }
-
-    public Calculator(double a, double b){
-        this.a = a;
-        this.b = b;
+        this.a = 0;
+        this.b = 0;
         this.operation = "+";
     }
 
@@ -49,10 +44,53 @@ public class Calculator {
         this.operation = operation;
     }
 
+    protected double sum(){
+        return a + b;
+    }
+    protected   double sub(){
+        return  a - b;
+    }
+    protected double multi(){
+        return a * b;
+    }
+
+    protected double div() throws Exception{
+        if(b != 0)
+            return a / b;
+        throw new Exception("На 0 делить нельзя");
+    }
+
+
+    public void solution(){
+        try {
+            switch (operation) {
+                case ("+"):
+                    solution = a + b;
+                    break;
+                case ("-"):
+                    solution = a - b;
+                    break;
+                case ("*"):
+                    solution = a * b;
+                    break;
+                case ("/"):
+                    if(b != 0)
+                        solution = a / b;
+                    else
+                        throw new Exception("На 0 делить нельзя");
+                    break;
+                default:
+                    System.out.println("Как оно сюда попало???");
+                    break;
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat();
         df.setDecimalSeparatorAlwaysShown(false);
-        return df.format(a) + " " + operation + " " + df.format(b);
+        return df.format(a) + " " + operation + " " + df.format(b) + " = " + df.format(solution);
     }
 }
