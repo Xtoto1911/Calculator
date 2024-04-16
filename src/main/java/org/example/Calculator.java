@@ -4,68 +4,71 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Calculator{
-    protected int a;
-    protected int b;
-    protected char operation;
+    private Num a;
+    private Num b;
+    private String operation;
 
-    protected int solution;
+    private Num solution;
 
-    List<Character> oper = Arrays.asList('+','-','*','/');
+    List<String> oper = Arrays.asList("+","-","*","/");
 
-    public Calculator(){
-        this.a = 0;
-        this.b = 0;
-        this.operation = '+';
+    public Calculator() throws Exception {
+        this.a = new DecNum("0");
+        this.b = new DecNum("0");
+        this.operation = "+";
     }
 
-    public Calculator(int a, char operation, int b){
+    public Calculator(Num a, String operation, Num b){
         this.a = a;
         this.b = b;
         this.operation = operation;
     }
 
-    public int getA() {
+    public Num getA() {
         return a;
     }
 
-    public void setA(int a) {
+    public void setA(Num a) {
         this.a = a;
     }
 
-    public int getB() {
+    public Num getB() {
         return b;
     }
 
-    public void setB(int b) {
+    public void setB(Num b) {
         this.b = b;
     }
 
-    public char getOperation() {
+    public String getOperation() {
         return operation;
     }
 
-    public void setOperation(char operation) {
+    public void setOperation(String operation) {
         this.operation = operation;
     }
 
-    public void solution(){
+    private void run(){
+
+    }
+    public Num solution(){
         try {
             switch (operation) {
-                case ('+'):
-                    solution = a + b;
+                case ("+"):
+                    solution = createNum(a.getNumber() + b.getNumber(), a.getNumSystem());
                     break;
-                case ('-'):
-                    solution = a - b;
+                case ("-"):
+                    solution.setNumber(a.getNumber() - b.getNumber());
                     break;
-                case ('*'):
-                    solution = a * b;
+                case ("*"):
+                    solution.setNumber(a.getNumber() * b.getNumber());
                     break;
-                case ('/'):
-                    if(b != 0)
-                        solution = a / b;
+                case ("/"):
+                    if(b.getNumber() != 0)
+                        solution.setNumber(a.getNumber() / b.getNumber());
                     else
                         throw new Exception("На 0 делить нельзя");
-                    break;
+                    return solution;
                 default:
                     System.out.println("Как оно сюда попало???");
                     break;
@@ -73,11 +76,18 @@ public class Calculator{
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return solution;
+    }
+    private Num createNum(int value, int system) throws Exception {
+        switch (system){
+            case(10):
+                return new DecNum(Integer.toString(value));
+            default:
+                throw new Exception("Данная система счисления не поддерживается!");
+        }
     }
     @Override
     public String toString() {
-        DecimalFormat df = new DecimalFormat();
-        df.setDecimalSeparatorAlwaysShown(false);
-        return df.format(a) + " " + operation + " " + df.format(b) + " = " + df.format(solution);
+        return a + " " + operation + " " + b + " = " + solution;
     }
 }
