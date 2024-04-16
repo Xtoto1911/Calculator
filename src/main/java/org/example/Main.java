@@ -6,12 +6,10 @@ import java.io.Console;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator(1.1,"/",2);
+        Calculator calculator = new Calculator(1,"/",2);
         System.out.println(calculator.toString());
-        CalculatorBin bin = new CalculatorBin("1010","/","1010");
+        CalculatorBin bin = new CalculatorBin("1010","-","1010");
         bin.solution();
         System.out.println(bin);
-
-
     }
 }

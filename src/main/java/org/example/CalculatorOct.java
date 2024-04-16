@@ -1,17 +1,16 @@
 package org.example;
 
-public class CalculatorBin extends Calculator{
+public class CalculatorOct extends Calculator{
+    private String aOct;
+    private String bOct;
 
-    private String aBin;
-    private String bBin;
-    private String solutionBin;
 
-    public CalculatorBin(){
+    public CalculatorOct(){
         super();
-        aBin = "0";
-        bBin = "0";
+        aOct = "0";
+        bOct = "0";
     }
-    public CalculatorBin(String a, char operation, String b){
+    public CalculatorOct(String a, String operation, String b){
         setA(a);
         setB(b);
         this.operation = operation;
@@ -19,36 +18,36 @@ public class CalculatorBin extends Calculator{
 
     public void setA(String a) {
         if (a.matches("^[01]+$")) {
-            aBin = a;
+            aOct = a;
         } else {
             throw new IllegalArgumentException("Введено не бинарное число");
         }
     }
 
     @Override
-    public void setA(int a) {
-        aBin = Integer.toBinaryString(a);
+    public void setA(double a) {
+        aOct = Long.toString(Double.doubleToLongBits(a));
     }
 
     @Override
-    public int getA() {
-        return Integer.parseInt();
+    public double getA() {
+        return Double.parseDouble(aOct);
     }
-
     public void setB(String b) {
-        if (b.matches("^[01]+$")) {
-            bBin = b;
-        } else {
-            throw new IllegalArgumentException("Введено не бинарное число");
-        }
+        bOct = b;
     }
 
     @Override
-    public void setB(int b) {
-        bBin = Integer.toBinaryString(b);
+    public void setB(double b) {
+        bOct = Long.toString(Double.doubleToLongBits(b));
     }
 
-    private String toBin(double num){
+    @Override
+    public double getB() {
+        return Double.parseDouble(bOct);
+    }
+
+    private String toOct(double num){
         StringBuilder binary = new StringBuilder();
         int temp = (int)num;
         if (temp < 0) {
@@ -70,14 +69,14 @@ public class CalculatorBin extends Calculator{
     }
     @Override
     public void solution() {
-        a = Long.parseLong(aBin, 2);
-        b = Long.parseLong(bBin, 2);
+        a = Long.parseLong(aOct, 8);
+        b = Long.parseLong(bOct, 8);
         super.solution();
-        solutionBin = toBin(solution);
+        toOct(solution);
     }
 
     @Override
     public String toString() {
-        return aBin+" "+operation+" "+bBin+" = "+solutionBin;
+        return aOct+" "+operation+" "+bOct+" = "+ toOct(solution);
     }
 }

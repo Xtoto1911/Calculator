@@ -1,79 +1,66 @@
 package org.example;
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
 
 public class Calculator{
-    protected double a;
-    protected double b;
-    protected String operation;
+    protected int a;
+    protected int b;
+    protected char operation;
 
-    protected double solution;
+    protected int solution;
+
+    List<Character> oper = Arrays.asList('+','-','*','/');
 
     public Calculator(){
         this.a = 0;
         this.b = 0;
-        this.operation = "+";
+        this.operation = '+';
     }
 
-    public Calculator(double a, String operation, double b){
+    public Calculator(int a, char operation, int b){
         this.a = a;
         this.b = b;
         this.operation = operation;
     }
 
-    public double getA() {
+    public int getA() {
         return a;
     }
 
-    public void setA(double a) {
+    public void setA(int a) {
         this.a = a;
     }
 
-    public double getB() {
+    public int getB() {
         return b;
     }
 
-    public void setB(double b) {
+    public void setB(int b) {
         this.b = b;
     }
 
-    public String getOperation() {
+    public char getOperation() {
         return operation;
     }
 
-    public void setOperation(String operation) {
+    public void setOperation(char operation) {
         this.operation = operation;
     }
-
-    protected double sum(){
-        return a + b;
-    }
-    protected   double sub(){
-        return  a - b;
-    }
-    protected double multi(){
-        return a * b;
-    }
-
-    protected double div() throws Exception{
-        if(b != 0)
-            return a / b;
-        throw new Exception("На 0 делить нельзя");
-    }
-
 
     public void solution(){
         try {
             switch (operation) {
-                case ("+"):
+                case ('+'):
                     solution = a + b;
                     break;
-                case ("-"):
+                case ('-'):
                     solution = a - b;
                     break;
-                case ("*"):
+                case ('*'):
                     solution = a * b;
                     break;
-                case ("/"):
+                case ('/'):
                     if(b != 0)
                         solution = a / b;
                     else
