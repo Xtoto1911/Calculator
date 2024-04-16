@@ -31,4 +31,19 @@ public abstract class Num {
                "OCT: "+Integer.toOctalString(number)+"\n"+
                "BIN: "+Integer.toBinaryString(number)+"\n";
     }
+
+    @Override
+    public String toString() {
+        switch (getNumSystem()){
+            case(2):
+                return Integer.toBinaryString(number);
+            case(8):
+                return Integer.toOctalString(number);
+            case(10):
+                return Integer.toString(number);
+            case(16):
+                return Integer.toHexString(number);
+        }
+        throw new RuntimeException("Данная система счисления не поддерживается!");
+    }
 }
