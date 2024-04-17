@@ -45,8 +45,10 @@ public class Calculator{
         return operation;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
+    public void setOperation(String operation) throws Exception {
+        if(oper.contains(operation))
+            this.operation = operation;
+        throw new Exception("Не можем выполнить такую операцию");
     }
 
     public Num solution() throws Exception {
