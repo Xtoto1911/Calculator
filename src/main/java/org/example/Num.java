@@ -19,17 +19,17 @@ public abstract class Num {
 
 
     protected int toDec(String numSt, String regex) throws Exception {
-        if(!numSt.matches(regex)){
+        if (!numSt.matches(regex)) {
             throw new Exception("Не подходит под формат данной системы счисления");
         }
-        return Integer.parseInt(numSt,getNumSystem());
+        return Integer.parseInt(numSt, getNumSystem());
     }
 
     public String toStringAllSys(){
-        return "Hex: "+Integer.toHexString(number)+"\n"+
-               "DEC: "+number+"\n"+
-               "OCT: "+Integer.toOctalString(number)+"\n"+
-               "BIN: "+Integer.toBinaryString(number)+"\n";
+        return "Hex: " + Integer.toHexString(number) + "\n" +
+                "DEC: " + number + "\n" +
+                "OCT: " + Integer.toOctalString(number) + "\n" +
+                "BIN: " + Integer.toBinaryString(number) + "\n";
     }
 
     @Override

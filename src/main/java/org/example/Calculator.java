@@ -16,6 +16,7 @@ public class Calculator{
         this.a = new DecNum("0");
         this.b = new DecNum("0");
         this.operation = "+";
+        solution();
     }
 
     public Calculator(Num a, String operation, Num b){
@@ -48,27 +49,26 @@ public class Calculator{
         this.operation = operation;
     }
 
-    private void run(){
-
-    }
-    public Num solution(){
+    public Num solution() throws Exception {
         try {
+            int res;
             switch (operation) {
                 case ("+"):
                     solution = createNum(a.getNumber() + b.getNumber(), a.getNumSystem());
-                    break;
+                    return solution;
                 case ("-"):
-                    solution.setNumber(a.getNumber() - b.getNumber());
-                    break;
+                    solution = createNum(a.getNumber() - b.getNumber(), a.getNumSystem());
+                    return  solution;
                 case ("*"):
-                    solution.setNumber(a.getNumber() * b.getNumber());
-                    break;
+                    solution = createNum(a.getNumber() * b.getNumber(), a.getNumSystem());
+                    return  solution;
                 case ("/"):
-                    if(b.getNumber() != 0)
-                        solution.setNumber(a.getNumber() / b.getNumber());
+                    if(b.getNumber() != 0) {
+                        solution = createNum(a.getNumber() / b.getNumber(), a.getNumSystem());
+                        return solution;
+                    }
                     else
                         throw new Exception("На 0 делить нельзя");
-                    return solution;
                 default:
                     System.out.println("Как оно сюда попало???");
                     break;
@@ -76,18 +76,45 @@ public class Calculator{
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return solution;
+        throw new Exception("Нельзя выполнить!");
     }
+
+
     private Num createNum(int value, int system) throws Exception {
+        String temp = "";
         switch (system){
+            case(2):
+                if(value >=0)
+                    temp = Integer.toBinaryString(value);
+                else {
+                    temp = Integer.toBinaryString(value * -1);
+                    temp = '-' + temp;
+                }
+                return new BinNum(temp);
+            case(8):
+                if(value >=0)
+                    temp = Integer.toOctalString(value);
+                else {
+                    temp = Integer.toOctalString(value * -1);
+                    temp = '-' + temp;
+                }
+                return new OctNum(temp);
             case(10):
                 return new DecNum(Integer.toString(value));
+            case(16):
+                if(value >=0)
+                    temp = Integer.toHexString(value);
+                else {
+                    temp = Integer.toHexString(value * -1);
+                    temp = '-' + temp;
+                }
+                return new HexNum(temp);
             default:
                 throw new Exception("Данная система счисления не поддерживается!");
         }
     }
     @Override
     public String toString() {
-        return a + " " + operation + " " + b + " = " + solution;
+        return a.toString() + " " + operation + " " + b.toString() + " = " + solution;
     }
 }
