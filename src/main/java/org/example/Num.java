@@ -18,12 +18,13 @@ public abstract class Num {
     public abstract int getNumSystem();
 
 
-    protected int toDec(String numSt, String regex) throws Exception {
-        if (!numSt.matches(regex)) {
-            throw new Exception("Не подходит под формат данной системы счисления");
+    protected int toDec(String numSt, String regex){
+        if (!numSt.matches(regex) || numSt.matches("[ ,;:]")) {
+            throw new RuntimeException("Не подходит под формат данной системы счисления");
         }
         return Integer.parseInt(numSt, getNumSystem());
     }
+
 
     public String toStringAllSys(){
         return "Hex: " + Integer.toHexString(number) + "\n" +

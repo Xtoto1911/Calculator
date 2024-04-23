@@ -53,31 +53,27 @@ public class Calculator{
     }
 
     public Num solution() throws Exception {
-        try {
-            int res;
-            switch (operation) {
-                case ("+"):
-                    solution = createNum(a.getNumber() + b.getNumber(), a.getNumSystem());
+        int res;
+        switch (operation) {
+            case ("+"):
+                solution = createNum(a.getNumber() + b.getNumber(), a.getNumSystem());
+                return solution;
+            case ("-"):
+                solution = createNum(a.getNumber() - b.getNumber(), a.getNumSystem());
+                return  solution;
+            case ("*"):
+                solution = createNum(a.getNumber() * b.getNumber(), a.getNumSystem());
+                return  solution;
+            case ("/"):
+                if(b.getNumber() != 0) {
+                    solution = createNum(a.getNumber() / b.getNumber(), a.getNumSystem());
                     return solution;
-                case ("-"):
-                    solution = createNum(a.getNumber() - b.getNumber(), a.getNumSystem());
-                    return  solution;
-                case ("*"):
-                    solution = createNum(a.getNumber() * b.getNumber(), a.getNumSystem());
-                    return  solution;
-                case ("/"):
-                    if(b.getNumber() != 0) {
-                        solution = createNum(a.getNumber() / b.getNumber(), a.getNumSystem());
-                        return solution;
-                    }
-                    else
-                        throw new Exception("На 0 делить нельзя");
-                default:
-                    System.out.println("Как оно сюда попало???");
-                    break;
-            }
-        }catch (Exception e) {
-            System.out.println(e.getMessage());
+                }
+                else
+                    throw new Exception("На 0 делить нельзя");
+            default:
+                System.out.println("Как оно сюда попало???");
+                break;
         }
         throw new Exception("Нельзя выполнить!");
     }

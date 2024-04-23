@@ -1,6 +1,3 @@
 
-m	java:S106
-"+Replace this use of System.out by a logger.(ïÖßÄ8çíı¦ê1J$a04a0c36-fa73-462f-92af-f04b5f92f527
-m	java:S106"+Replace this use of System.out by a logger.(ìÁâŒ8èíı¦ê1J$6201d971-ac85-48cd-a4e2-d2c7640176d5
 t
-java:S1128",Remove this unused import 'java.io.Console'.(æÅªıÿÿÿÿ8éíı¦ê1J$12061bca-cf8a-4bd2-8e93-2ab0d1b9c379
+java:S1128",Remove this unused import 'java.io.Console'.(æÅªıÿÿÿÿ8‡®Éåğ1J$b2c17360-d0e3-4292-8f81-76d0ab4d4c50
