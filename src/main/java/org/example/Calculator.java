@@ -1,5 +1,4 @@
 package org.example;
-import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,19 +9,13 @@ public class Calculator{
 
     private Num solution;
 
-    List<String> oper = Arrays.asList("+","-","*","/");
+    private final List<String> operations = Arrays.asList("+","-","*","/");
 
-    public Calculator() throws Exception {
+    public Calculator(){
         this.a = new DecNum("0");
         this.b = new DecNum("0");
         this.operation = "+";
         solution();
-    }
-
-    public Calculator(Num a, String operation, Num b){
-        this.a = a;
-        this.b = b;
-        this.operation = operation;
     }
 
     public Num getA() {
@@ -45,15 +38,14 @@ public class Calculator{
         return operation;
     }
 
-    public void setOperation(String operation) throws Exception {
-        if(oper.contains(operation))
+    public void setOperation(String operation){
+        if(operations.contains(operation))
             this.operation = operation;
         else
-            throw new Exception("Не можем выполнить такую операцию");
+            throw new IllegalArgumentException("Не можем выполнить такую операцию");
     }
 
-    public Num solution() throws Exception {
-        int res;
+    public Num solution(){
         switch (operation) {
             case ("+"):
                 solution = createNum(a.getNumber() + b.getNumber(), a.getNumSystem());
@@ -70,50 +62,51 @@ public class Calculator{
                     return solution;
                 }
                 else
-                    throw new Exception("На 0 делить нельзя");
+                    throw new IllegalArgumentException("На 0 делить нельзя");
             default:
                 System.out.println("Как оно сюда попало???");
                 break;
         }
-        throw new Exception("Нельзя выполнить!");
+        throw new IllegalArgumentException("Нельзя выполнить!");
     }
 
 
-    private Num createNum(int value, int system) throws Exception {
-        String temp = "";
-        switch (system){
-            case(2):
-                if(value >=0)
+    private Num createNum(int value, int system){
+        String temp;
+        return switch (system) {
+            case (2) -> {
+                if (value >= 0)
                     temp = Integer.toBinaryString(value);
                 else {
                     temp = Integer.toBinaryString(value * -1);
                     temp = '-' + temp;
                 }
-                return new BinNum(temp);
-            case(8):
-                if(value >=0)
+                yield new BinNum(temp);
+            }
+            case (8) -> {
+                if (value >= 0)
                     temp = Integer.toOctalString(value);
                 else {
                     temp = Integer.toOctalString(value * -1);
                     temp = '-' + temp;
                 }
-                return new OctNum(temp);
-            case(10):
-                return new DecNum(Integer.toString(value));
-            case(16):
-                if(value >=0)
+                yield new OctNum(temp);
+            }
+            case (10) -> new DecNum(Integer.toString(value));
+            case (16) -> {
+                if (value >= 0)
                     temp = Integer.toHexString(value);
                 else {
                     temp = Integer.toHexString(value * -1);
                     temp = '-' + temp;
                 }
-                return new HexNum(temp);
-            default:
-                throw new Exception("Данная система счисления не поддерживается!");
-        }
+                yield new HexNum(temp);
+            }
+            default -> throw new IllegalArgumentException("Данная система счисления не поддерживается!");
+        };
     }
     @Override
     public String toString() {
-        return a.toString() + " " + operation + " " + b.toString() + " = " + solution;
+        return getA().toString() + " " + getOperation() + " " + getB().toString() + " = " + solution;
     }
 }

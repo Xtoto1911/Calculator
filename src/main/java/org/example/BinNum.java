@@ -1,8 +1,8 @@
 package org.example;
 
 public class BinNum extends Num{
-    public BinNum(String value) throws Exception {
-        setNumber(toDec(value,"^[0-1]+$"));
+    public BinNum(String value){
+        setNumber(toDec(value,"^[-]?[0-1]+$"));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package org.example;
 
 public class HexNum extends Num{
-    public HexNum(String value) throws Exception {
+    public HexNum(String value){
         int res = toDec(value,"[-]?[0-9A-Fa-f]+");
         setNumber(res);
     }

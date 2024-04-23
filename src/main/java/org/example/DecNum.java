@@ -1,7 +1,7 @@
 package org.example;
 
 public class DecNum extends Num{
-    public DecNum(String value) throws Exception {
+    public DecNum(String value){
         setNumber(toDec(value,"^-?\\d+$"));
     }
 
