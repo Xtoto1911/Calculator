@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class CalculatorProgrammer {
-    private final Calculator calc;
+public class CalculatorProgrammer extends Calculator {
+
     private final Scanner scanner;
     private final List<String> startMenu = Arrays.asList(
             "1.HEX","2.DEC","3.OCT","4.BIN","5.Закрыть"
@@ -15,8 +15,8 @@ public class CalculatorProgrammer {
     private static final String MESOPERNUM = "Введите операцию: ";
 
     public CalculatorProgrammer(){
+        super();
         scanner = new Scanner(System.in);
-        calc = new Calculator();
     }
 
     public void performCalculation(Class<? extends Num> numClass){
@@ -24,26 +24,26 @@ public class CalculatorProgrammer {
         scanner.nextLine();
         try {
             Num a = numClass.getConstructor(String.class).newInstance(scanner.nextLine());
-            calc.setA(a);
+            setA(a);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return;
         }
         System.out.println();
         System.out.print(MESOPERNUM);
-        calc.setOperation(scanner.nextLine());
+        setOperation(scanner.nextLine());
         System.out.println();
         System.out.print(MESSECONDNUM);
         try {
             Num b = numClass.getConstructor(String.class).newInstance(scanner.nextLine());
-            calc.setB(b);
+            setB(b);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return;
         }
         System.out.println();
-        Num res = calc.solution();
-        System.out.println(calc);
+        Num res = solution();
+        System.out.println(super.toString());
         System.out.println(res.toStringAllSys());
     }
     public void start(){

@@ -2,7 +2,7 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 
-public class Calculator{
+public abstract class Calculator{
     private Num a;
     private Num b;
     private String operation;
