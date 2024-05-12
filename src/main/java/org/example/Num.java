@@ -15,7 +15,7 @@ public abstract class Num {
     public abstract int getNumSystem();
 
 
-    protected int toDec(String numSt, String regex){
+    protected int toDec(String numSt, String regex) {
         if (!numSt.matches(regex) || numSt.matches("[ ,;:]")) {
             throw new IllegalArgumentException("Не подходит под формат данной системы счисления");
         }

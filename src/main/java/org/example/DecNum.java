@@ -2,7 +2,7 @@ package org.example;
 
 public class DecNum extends Num{
     public DecNum(String value){
-        setNumber(toDec(value,"^-?\\d+$"));
+        setNumber(toDec(value,"^-?(0|[1-9]\\d*)$"));
     }
 
     @Override

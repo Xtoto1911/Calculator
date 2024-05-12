@@ -11,7 +11,7 @@ public abstract class Calculator{
 
     private final List<String> operations = Arrays.asList("+","-","*","/");
 
-    public Calculator(){
+    public Calculator() throws Exception {
         this.a = new DecNum("0");
         this.b = new DecNum("0");
         this.operation = "+";
