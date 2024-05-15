@@ -2,7 +2,7 @@ package org.example;
 
 public class BinNum extends Num{
     public BinNum(String value){
-        setNumber(toDec(value,"^[-]?[1][0-1]*|[0-1]$"));
+        setNumber(toInt(value,"^[-]?[1][0-1]*|[0-1]$"));
     }
 
     @Override
